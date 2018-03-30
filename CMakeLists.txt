@@ -10,8 +10,15 @@
 # See the COPYING file for more information.
 #
 #################################################################################
-project(GEOS)
-cmake_minimum_required(VERSION 3.0.0)
+project(GEOS C CXX)
+cmake_minimum_required(VERSION 3.5.0)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_C_STANDARD 11)
+#Много предупреждения по поводу использования устаревшего std::auto_ptr
+set(CMAKE_WARN_DEPRECATED OFF)
 
 if(NOT CMAKE_VERSION)
     set(CMAKE_VERSION
@@ -87,8 +94,6 @@ endif()
 #################################################################################
 # Setup C/C++ compiler options
 #################################################################################
-set(CMAKE_CXX_STANDARD 98)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(NOT MSVC_IDE)
   if(NOT CMAKE_BUILD_TYPE)
@@ -116,7 +121,7 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
     "Forcing IEEE 754 using flag -ffloat-store - ${GEOS_ENABLE_FLOATSTORE}")
 
   # Warnings specification
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -Wno-deprecated")
 
   # Turn on Position Independent Code generation for GEOS C shared library
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
@@ -341,7 +346,7 @@ configure_file(${PROJECT_SOURCE_DIR}/capi/geos_c.h.in
 if(GEOS_ENABLE_TESTS)
   enable_testing()
   # Define "make check" as alias for "make test"
-  add_custom_target(check COMMAND ctest)
+  add_custom_target(check_geos COMMAND ctest)
 endif()
 
 #################################################################################
