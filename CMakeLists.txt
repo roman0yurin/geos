@@ -17,8 +17,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_C_STANDARD 11)
-#Много предупреждения по поводу использования устаревшего std::auto_ptr
-set(CMAKE_WARN_DEPRECATED OFF)
 
 if(NOT CMAKE_VERSION)
     set(CMAKE_VERSION
