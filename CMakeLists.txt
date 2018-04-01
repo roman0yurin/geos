@@ -235,19 +235,20 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Setup include directories
 #################################################################################
 
-# for including GEOS C++ API headers
-include_directories(${PROJECT_SOURCE_DIR}/include)
-
-# for including build-specific GEOS C API headers
-include_directories(${PROJECT_BINARY_DIR}/capi)
-
-# for including build-specific version.h, platform.h and geos_c.h
-include_directories(${PROJECT_BINARY_DIR}/include)
-
-# for geos_ts.cpp which does #include "../geos_revision.h" whereas
-# CMake generates geos_revision.h in build directory,
-# to not to pollute source tree.
-include_directories(${PROJECT_BINARY_DIR})
+set(GEOS_INCLUDES
+    # for including GEOS C++ API headers
+    ${PROJECT_SOURCE_DIR}/include
+    # for including build-specific GEOS C API headers
+    ${PROJECT_BINARY_DIR}/capi
+    # for including build-specific version.h, platform.h and geos_c.h
+    ${PROJECT_BINARY_DIR}/include
+    # for geos_ts.cpp which does #include "../geos_revision.h" whereas
+    # CMake generates geos_revision.h in build directory,
+    # to not to pollute source tree.
+    ${PROJECT_BINARY_DIR}
+)
+include_directories(${GEOS_INCLUDES})
+set_property(GLOBAL PROPERTY GEOS_INCLUDE_DIRS "${GEOS_INCLUDES}")
 
 #################################################################################
 # Setup checks and generate config headers
