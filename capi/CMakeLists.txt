@@ -23,7 +23,7 @@ file(GLOB geos_capi_HEADERS ${CMAKE_BINARY_DIR}/capi/*.h) # fix source_group iss
 
 if(NOT GEOS_ENABLE_MACOSX_FRAMEWORK) 
   # if building OS X framework, CAPI built into C++ library 
-  add_library(geos_c SHARED ${geos_c_SOURCES}) 
+  add_library(geos_c STATIC ${geos_c_SOURCES})
 
   target_link_libraries(geos_c geos)
 
