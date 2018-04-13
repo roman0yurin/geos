@@ -25,7 +25,7 @@ if(NOT GEOS_ENABLE_MACOSX_FRAMEWORK)
   # if building OS X framework, CAPI built into C++ library 
   add_library(geos_c STATIC ${geos_c_SOURCES})
 
-  target_link_libraries(geos_c geos)
+  target_link_libraries(geos_c geos-static)
 
   if (WIN32)
     set_target_properties(geos_c
