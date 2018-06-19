@@ -75,7 +75,7 @@ option(GEOS_BUILD_STATIC
   "Set to OFF|ON (default) to build GEOS static libraries" ON)
 
 option(GEOS_BUILD_SHARED
-  "Set to OFF|ON (default) to build GEOS shared libraries" ON)
+  "Set to OFF|ON (default) to build GEOS shared libraries" OFF)
 
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
   option(GEOS_ENABLE_FLOATSTORE

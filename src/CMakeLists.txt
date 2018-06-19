@@ -62,6 +62,7 @@ if(GEOS_ENABLE_MACOSX_FRAMEWORK)
 else()
 
   if(GEOS_BUILD_SHARED)
+    message(">>>>>>>>>>>>>>>>>>>>>>>>>SHARED GEOS")
     add_library(geos SHARED ${geos_SOURCES} ${geos_ALL_HEADERS})
 
     set_target_properties(geos
