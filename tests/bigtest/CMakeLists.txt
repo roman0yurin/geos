@@ -24,7 +24,7 @@ if(GEOS_ENABLE_TESTS)
   if(APPLE AND GEOS_ENABLE_MACOSX_FRAMEWORK) 
     target_link_libraries(bug234 GEOS) 
   else() 
-    target_link_libraries(bug234 geos) 
+    target_link_libraries(bug234 geos-static)
   endif() 
 
   add_executable(TestSweepLineSpeed
@@ -34,7 +34,7 @@ if(GEOS_ENABLE_TESTS)
   if(APPLE AND GEOS_ENABLE_MACOSX_FRAMEWORK)
     target_link_libraries(TestSweepLineSpeed GEOS)
   else()
-    target_link_libraries(TestSweepLineSpeed geos)
+    target_link_libraries(TestSweepLineSpeed geos-static)
   endif()
 
   add_test(bug234 ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/bug234)

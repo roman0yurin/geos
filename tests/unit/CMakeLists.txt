@@ -25,7 +25,7 @@ if(GEOS_ENABLE_TESTS)
   if(APPLE AND GEOS_ENABLE_MACOSX_FRAMEWORK)
     target_link_libraries(geos_unit GEOS)
  	else()
-    target_link_libraries(geos_unit geos geos_c)
+    target_link_libraries(geos_unit geos-static geos_c)
  	endif()
 
   add_test(geos_unit ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/geos_unit)
