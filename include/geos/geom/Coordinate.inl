@@ -21,6 +21,7 @@
 #include <cassert>
 #include <cmath>
 
+
 namespace geos {
 namespace geom { // geos::geom
 
